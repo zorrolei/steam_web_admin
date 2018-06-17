@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam管理后台</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link rel="stylesheet" href="../../css/plugins/bootstrap-daterangepicker/daterangepicker.css">
+    <link href="../../css/animate.css" rel="stylesheet">
+    <link href="../../css/style.css?v=4.1.0" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-6">
+            <ol class="breadcrumb">
+                <li>首页</li>
+                <li>商户管理</li>
+                <li><strong>商户店铺管理</strong></li>
+            </ol>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+
+    <div class="wrapper wrapper-content">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="form-inline">
+                    <div class="form-group margin-top-xs">
+                        <select name="" id="" class="form-control">
+                            <option selected="" value="请选择查询条件">请选择查询条件</option>
+                            <option value="商户ID">商户ID</option>
+                            <option value="用户名">用户名</option>
+                            <option value="商户名称">商户名称</option>
+                            <option value="店铺账号">店铺账号</option>
+                            <option value="店铺名称">店铺名称</option>
+                            <option value="店铺ID">店铺ID</option>
+                        </select>
+                        <input type="text" class="form-control" placeholder="请输入搜索关键字">
+                    </div>
+                    <div class="form-group margin-top-xs">
+                        <select name="" id="" class="form-control">
+                            <option selected="" value="全部商户级别">全部商户级别</option>
+                            <option value="经销商">经销商</option>
+                            <option value="直销商">直销商</option>
+                        </select>
+                    </div>
+                    <div class="form-group margin-top-xs">
+                        <select name="" id="" class="form-control">
+                            <option selected="" value="全部商户状态">全部商户状态</option>
+                            <option value="开启">开启</option>
+                            <option value="关闭">关闭</option>
+                        </select>
+                    </div>
+
+                </div>
+                <div class="form-inline margin-top">
+                    <div class="form-group">
+                        <p class="form-control-static">授权过期时间</p>
+                    </div>
+                    <input type="text" class="form-control" id="daterange" placeholder="请选择时间小范围" style="min-width: 312px;">
+                    <div class="form-group margin-top-xs">
+                        <button class="btn btn-danger add-button">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="example">
+                    <div class=" hidden-xs" id="exampleToolbar" role="group">
+                        <a href="javascript:void(0);" type="button" class="btn btn-success shelf-button">
+                            导出EXCEL
+                        </a>
+                    </div>
+                    <table id="exampleTableToolbar" class="text-center table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th data-field="col-01" class="text-center">商户ID</th>
+                                <th data-field="col-02" class="text-center">用户名</th>
+                                <th data-field="col-03" class="text-center">商户名称</th>
+                                <th data-field="col-04" class="text-center">商户级别</th>
+                                <th data-field="col-05" class="text-center">商户状态</th>
+                                <th data-field="col-06" class="text-center">店铺编号</th>
+                                <th data-field="col-07" class="text-center">店铺账号</th>
+                                <th data-field="col-08" class="text-center">店铺名称</th>
+                                <th data-field="col-09" class="text-center">店铺头像</th>
+                                <th data-field="col-10" class="text-center">添加时间</th>
+                                <th data-field="col-11" class="text-center">授权过期时间</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>121</td>
+                                <td>zhangsan</td>
+                                <td>张三</td>
+                                <td>直销商</td>
+                                <td>已开启</td>
+                                <td>123</td>
+                                <td>zhangsan</td>
+                                <td>张三的店1</td>
+                                <td><img src="../../img/news_img01.png" style="max-width:60px;" /></td>
+                                <td>2018-05-12 12:34:23</td>
+                                <td>2018-05-12 12:34:23</td>
+                            </tr>
+                            <tr>
+                                <td>121</td>
+                                <td>zhangsan</td>
+                                <td>张三</td>
+                                <td>直销商</td>
+                                <td>已开启</td>
+                                <td>123</td>
+                                <td>zhangsan</td>
+                                <td>张三的店1</td>
+                                <td><img src="../../img/news_img01.png" style="max-width:60px;" /></td>
+                                <td>2018-05-12 12:34:23</td>
+                                <td>2018-05-12 12:34:23</td>
+                            </tr>
+                            <tr>
+                                <td>121</td>
+                                <td>zhangsan</td>
+                                <td>张三</td>
+                                <td>直销商</td>
+                                <td>已开启</td>
+                                <td>123</td>
+                                <td>zhangsan</td>
+                                <td>张三的店1</td>
+                                <td><img src="../../img/news_img01.png" style="max-width:60px;" /></td>
+                                <td>2018-05-12 12:34:23</td>
+                                <td>2018-05-12 12:34:23</td>
+                            </tr>
+                            <tr>
+                                <td>121</td>
+                                <td>zhangsan</td>
+                                <td>张三</td>
+                                <td>直销商</td>
+                                <td>已开启</td>
+                                <td>123</td>
+                                <td>zhangsan</td>
+                                <td>张三的店1</td>
+                                <td><img src="../../img/news_img01.png" style="max-width:60px;" /></td>
+                                <td>2018-05-12 12:34:23</td>
+                                <td>2018-05-12 12:34:23</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--修改区域-->
+    <div class="modal" id="editModal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改商户信息</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">商户编号</div>
+                            <div class="col-sm-8">121</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">用户名</div>
+                            <div class="col-sm-8">zhangsan</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">商户级别</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <select name="" id="" class="form-control">
+                                    <option value="核心经销商">核心经销商</option>
+                                    <option value="经销商">经销商</option>
+                                    <option value="直销商">直销商</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">所在地区</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入所在地区">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">联系人</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入联系人">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">身份证号</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入身份证号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">手机号码</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入手机号码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">联系电话</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入联系电话">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">QQ</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入联系QQ">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">详细联系地址</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入详细联系地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">电子信箱</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入电子信箱">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">传真</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入传真">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">店铺地址</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <input type="text" class="form-control" placeholder="请输入店铺地址">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">上级</div>
+                            <div class="col-sm-8">lisi</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">充值码权限</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 开启
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 关闭
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">修改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--修改区域-->
+
+    <!--修改区域-->
+    <div class="modal" id="editState" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改商户状态</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">商户状态</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 开启
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 关闭
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">修改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--修改区域-->
+
+
+    <!-- 全局js -->
+    <script src="../../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="../../js/content.js?v=1.0.0"></script>
+    <script src="../../js/contabs-sub.js"></script>
+    <!-- 第三方插件 -->
+    <script src="../../js/plugins/pace/pace.min.js"></script>
+    <!-- Bootstrap table -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-CN.min.js"></script>
+    <!-- Sweet alert -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../../js/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+    <script src="../../js/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!--clipboard-->
+    <script src="../../js/plugins/clipboard/clipboard.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //dataTimePicker
+            $('#daterange').daterangepicker({
+                "autoApply": true,
+                "timePicker": true,
+                "timePicker24Hour": true,
+                "timePickerSeconds": true,
+                ranges: {
+                    '今天': [moment(), moment()],
+                    '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '过去7天': [moment().subtract(6, 'days'), moment()],
+                    '过去30天': [moment().subtract(29, 'days'), moment()],
+                    '这个月': [moment().startOf('month'), moment().endOf('month')],
+                    '上个月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                locale : {
+                    "format" : 'YYYY-MM-DD HH:mm:ss',
+                    "separator" : " 至 ",//
+                    "applyLabel" : "确定",
+                    "cancelLabel" : "取消",
+                    "fromLabel" : "起始时间",
+                    "toLabel" : "结束时间'",
+                    "customRangeLabel" : "自定义",
+                    "weekLabel" : "W",
+                    "daysOfWeek" : ["日", "一", "二", "三", "四", "五", "六"],
+                    "monthNames" : ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                    "firstDay" : 1
+                }
+            }, function(start, end, label) {
+                console.log('您选择的时间: ' + start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            });
+
+            //data-table
+            $('#exampleTableToolbar').bootstrapTable({
+                toolbar: '#exampleToolbar',
+                showColumns: true,
+                iconSize: 'outline',
+                icons: {
+                    columns: 'glyphicon-list'
+                },
+                pagination:true,
+                sidePagination:'client',
+                pageNumber:1,
+                pageSize:10,
+                buttonsAlign:'left',
+                toolbarAlign:'right'
+            });
+
+            //sweetalert
+            $('.delete-button').click(function () {
+                swal({
+                        title: "确认删除",
+                        text: "确定删除这条记录吗",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "取消",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定删除",
+                        closeOnConfirm: false
+                    },
+                    function(){
+                        swal("删除成功", "记录删除成功", "success");
+                    });
+            });
+            $(".add-button").click(function () {
+                swal({title: "添加成功", text: "区域添加成功", type: "success"})
+            });
+
+        });
+    </script>
+
+</body>
+
+</html>

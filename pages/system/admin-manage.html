@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam管理后台</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../../css/animate.css" rel="stylesheet">
+    <link href="../../css/style.css?v=4.1.0" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+<div class="row wrapper border-bottom white-bg page-heading">
+    <div class="col-sm-6">
+        <ol class="breadcrumb">
+            <li>首页</li>
+            <li>系统管理</li>
+            <li><strong>管理员管理</strong></li>
+        </ol>
+    </div>
+    <div class="col-sm-6">
+
+    </div>
+</div>
+
+
+<div class="wrapper wrapper-content">
+
+    <div class="ibox float-e-margins">
+        <div class="ibox-title">
+            <h5>添加管理员</h5>
+        </div>
+        <div class="ibox-content">
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">管理员账号</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="请输入管理员账号">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">管理员密码</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="请输入管理员密码">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">管理员姓名</label>
+                    <div class="col-sm-5">
+                        <input type="text" class="form-control" id="inputEmail3" placeholder="请输入管理员姓名">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">角色</label>
+                    <div class="col-sm-5">
+                        <select name="" id="" class="form-control">
+                            <option selected="" value="请选择角色">请选择角色</option> <option value="超级管理员">超级管理员</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">绑定硬件</label>
+                    <div class="col-sm-5">
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 绑定
+                        </label> <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 不绑定 </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">绑定硬件码</label>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="硬件码"> <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">获取本机硬件码</button>
+                                  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">绑定IP地址</label>
+                    <div class="col-sm-5">
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="option1" checked> 绑定
+                        </label> <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2"> 不绑定 </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">绑定IP地址</label>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="IP地址"> <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">获取本机IP</button>
+                                  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="IP地址"> <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">获取本机IP</button>
+                                  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="IP地址"> <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">获取本机IP</button>
+                                  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label"></label>
+                    <div class="col-sm-5">
+                        <div class="input-group">
+                            <input type="text" class="form-control" placeholder="IP地址"> <span class="input-group-btn">
+                                    <button class="btn btn-primary" type="button">获取本机IP</button>
+                                  </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="inputEmail3" class="col-sm-3 control-label">账号状态</label>
+                    <div class="col-sm-5">
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions3" id="inlineRadio1" value="option1" checked> 允许
+                        </label> <label class="radio-inline">
+                        <input type="radio" name="inlineRadioOptions3" id="inlineRadio2" value="option2"> 禁用 </label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-sm-2 col-sm-push-3">
+                        <button class="btn btn-info submit-button btn-block">添加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- 全局js -->
+<script src="../../js/jquery.min.js?v=2.1.4"></script>
+<script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+
+<!-- 自定义js -->
+<script src="../../js/content.js?v=1.0.0"></script>
+<script src="../../js/contabs-sub.js"></script>
+<!-- 第三方插件 -->
+<script src="../../js/plugins/pace/pace.min.js"></script>
+<!-- Bootstrap table -->
+<script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+<script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-CN.min.js"></script>
+<!-- Sweet alert -->
+<script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+<script>
+    $(document).ready(function(){
+        //sweetalert
+        $(".submit-button").click(function(){
+            swal({title : "添加成功", text : "管理员添加成功", type : "success"})
+        });
+    });
+</script>
+
+
+</body>
+
+</html>

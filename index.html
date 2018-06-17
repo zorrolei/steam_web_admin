@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="renderer" content="webkit">
+
+    <title>Steam管理后台</title>
+
+    <!--[if lt IE 9]>
+    <script src="https://cdn.bootcss.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <link href="css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="css/font-awesome.min.css?v=4.4.0" rel="stylesheet">
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/style.css?v=4.1.0" rel="stylesheet">
+    <script>
+        if(navigator.appName == "Microsoft Internet Explorer"&&parseInt(navigator.appVersion.split(";")[1].replace(/[ ]/g, "").replace("MSIE",""))<9){
+            var d = document.createElement("div");
+            d.className = "browsehappy";
+            d.innerHTML = '<div style="width:100%;height:900px;font-size:20px;line-height:500px;text-align:center;background-color:#000;color:#fff; position:absolute;z-index:9999;-ms-filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);filter: progid:DXImageTransform.Microsoft.Alpha(Opacity=80);">您的浏览器版本太低了,为了您的用户体验请 <a target="_blank" href="https://www.microsoft.com/zh-cn/download/internet-explorer.aspx" class="btn btn-primary">立即升级</a></div>';
+            var f = function(){
+                var s = document.getElementsByTagName("body")[0];
+                if("undefined" == typeof(s)){
+                    setTimeout(f, 10)
+                } else {
+                    s.insertBefore(d, s.firstChild)
+                }
+            };
+            f()
+        }
+    </script>
+</head>
+
+<body class="fixed-sidebar full-height-layout gray-bg" style="overflow:hidden">
+    <div id="wrapper">
+        <!--左侧导航开始-->
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="nav-close"><i class="fa fa-times-circle"></i>
+            </div>
+            <div class="sidebar-collapse">
+                <ul class="nav" id="side-menu">
+                    <li class="nav-header text-center">
+                        <div class="dropdown profile-element">
+                            <h2 style="color: #fff;"><strong>Steam</strong>管理后台</h2>
+                        </div>
+                        <div class="logo-element">S</div>
+                    </li>
+                </ul>
+                <!--左侧菜单-->
+                <div class="panel-group nav-sidemenu navbar-static-side" id="accordion" role="tablist" aria-multiselectable="true">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a class="J_menuItem" href="index-home.html">
+                                    <i class="fa fa-home"></i>
+                                    <span class="nav-label">首页</span>
+                                </a>
+                            </h4>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingOne">
+                            <h4 class="panel-title">
+                                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    <i class="fa fa-cog"></i>
+                                    <span class="nav-label">系统管理</span>
+                                    <span class="fa fa-angle-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a class="J_menuItem" href="pages/system/admin-manage.html">管理员管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/system/admin-list.html">管理员列表</a></li>
+                                    <li><a class="J_menuItem" href="pages/system/admin-role.html">角色权限管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/system/admin-logs.html">操作日志</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingTwo">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    <i class="fa fa-cubes"></i>
+                                    <span class="nav-label">商品管理</span>
+                                    <span class="fa fa-angle-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a class="J_menuItem" href="pages/goods/directory-manage.html">目录管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/goods/goods-add.html">Steam商品添加</a></li>
+                                    <li><a class="J_menuItem" href="pages/goods/goods-list.html">Steam商品列表</a></li>
+                                    <li><a class="J_menuItem" href="pages/goods/steam-account-manage.html">Steam账号管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/goods/card-import-logs.html">便宜货源导卡记录</a></li>
+                                    <li><a class="J_menuItem" href="pages/goods/card-export-logs.html">便宜货源取卡记录</a></li>
+                                    <li><a class="J_menuItem" href="pages/goods/card-stock.html">便宜货源库存管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/goods/alarm-list.html">库存报警列表</a></li>
+                                    <li><a class="J_menuItem" href="pages/goods/area-manage.html">上卡代理区域管理</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingThree">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                    <i class="fa fa-users"></i>
+                                    <span class="nav-label">商户管理</span>
+                                    <span class="fa fa-angle-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a class="J_menuItem" href="pages/merchants/merchants-list.html">商户列表</a></li>
+                                    <li><a class="J_menuItem" href="pages/merchants/stores-list.html">商户店铺管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/merchants/merchants-safty.html">商户安全管理（预留）</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFour">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                    <i class="fa fa-jpy"></i>
+                                    <span class="nav-label">财务管理</span>
+                                    <span class="fa fa-angle-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a class="J_menuItem" href="pages/finance/merchant-financial-manage.html">商户财务管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/finance/plus-minus-cash.html">财务加减款</a></li>
+                                    <li><a class="J_menuItem" href="pages/finance/plus-minus-cash-logs.html">财务加减款记录</a></li>
+                                    <li><a class="J_menuItem" href="pages/finance/transaction-amount.html">交易额度划拨</a></li>
+                                    <li><a class="J_menuItem" href="pages/finance/transaction-amount-logs.html">交易额度划拨记录</a></li>
+                                    <li><a class="J_menuItem" href="pages/finance/system-funds-logs.html">系统划拨资金变动明细</a></li>
+                                    <li><a class="J_menuItem" href="pages/finance/online-recharge-logs.html">保证金在线充值记录</a></li>
+                                    <li><a class="J_menuItem" href="pages/finance/online-recharge-fail-manage.html">保证金在线充值掉单管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/finance/cash-change-logs.html">保证金资金变动明细</a></li>
+                                    <li><a class="J_menuItem" href="pages/finance/quota-cash-change-logs.html">交易额度资金变动明细</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingFive">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapsFive" aria-expanded="false" aria-controls="collapsFive">
+                                    <i class="fa fa-list"></i>
+                                    <span class="nav-label">订单管理</span>
+                                    <span class="fa fa-angle-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapsFive" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFive">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a class="J_menuItem" href="pages/order/order-tmall.html">淘宝/天猫订单管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/order/order-tmall-fail.html">系统淘宝天猫掉单管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/order/order-cdk.html">CDK充值订单管理</a></li>
+                                    <li><a class="J_menuItem" href="pages/order/order-cdk-fail.html">CDK充值掉单管理</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingSix">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSix" aria-expanded="false" aria-controls="collapseSix">
+                                    <i class="fa fa-key"></i>
+                                    <span class="nav-label">充值码CDK管理</span>
+                                    <span class="fa fa-angle-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseSix" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSix">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a class="J_menuItem" href="pages/cdk/cdk-manage.html">充值码管理</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingSeven">
+                            <h4 class="panel-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseSeven" aria-expanded="false" aria-controls="collapseSeven">
+                                    <i class="fa fa-bar-chart"></i>
+                                    <span class="nav-label">数据统计</span>
+                                    <span class="fa fa-angle-right"></span>
+                                </a>
+                            </h4>
+                        </div>
+                        <div id="collapseSeven" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingSeven">
+                            <div class="panel-body">
+                                <ul>
+                                    <li><a class="J_menuItem" href="pages/statistics/store-sales.html">商户店铺销售报表</a></li>
+                                    <li><a class="J_menuItem" href="pages/statistics/dealer-subordinate-sales.html">经销商下级销售统计报表</a></li>
+                                    <li><a class="J_menuItem" href="pages/statistics/dealer-sales.html">经销商销售统计报表</a></li>
+                                    <li><a class="J_menuItem" href="pages/statistics/goods-sales.html">商品销售报表</a></li>
+                                    <li><a class="J_menuItem" href="pages/statistics/account-statistics.html">直储账号交易统计</a></li>
+                                    <li><a class="J_menuItem" href="pages/statistics/balance-statistics.html">直储账号余额凌晨统计</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div><!--左侧菜单-->
+            </div>
+        </nav>
+        <!--左侧导航结束-->
+        <!--右侧部分开始-->
+        <div id="page-wrapper" class="gray-bg dashbard-1">
+            <div class="row border-bottom">
+                <nav class="navbar navbar-static-top " role="navigation" style="margin-bottom: 0">
+                    <div class="navbar-header"><a class="navbar-minimalize minimalize-styl-2 btn btn-primary " href="#"><i class="fa fa-bars"></i> </a>
+                        <div class="account-name hidden-xs">
+
+                        </div>
+                    </div>
+                </nav>
+            </div>
+            <div class="row content-tabs">
+                <button class="roll-nav roll-left J_tabLeft"><i class="fa fa-backward"></i>
+                </button>
+                <nav class="page-tabs J_menuTabs">
+                    <div class="page-tabs-content">
+                        <a href="javascript:;" class="active J_menuTab" data-id="index-home.html">首页</a>
+                    </div>
+                </nav>
+                <button class="roll-nav roll-right J_tabRight" style="right: 180px;"><i class="fa fa-forward"></i></button>
+                <button class="roll-nav roll-right J_tabRight J_tabRefresht"><i class="fa fa-refresh" aria-hidden="true"></i></button>
+
+                <div class="btn-group roll-nav roll-right">
+                    <button class="dropdown J_tabClose" data-toggle="dropdown">关闭操作<span class="caret"></span></button>
+                    <ul role="menu" class="dropdown-menu dropdown-menu-right">
+                        <li class="J_tabShowActive"><a>定位当前选项卡</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li class="J_tabCloseAll"><a>关闭全部选项卡</a>
+                        </li>
+                        <li class="J_tabCloseOther"><a>关闭其他选项卡</a>
+                        </li>
+                    </ul>
+                </div>
+                <a href="pages/other/login.html" class="roll-nav roll-right J_tabExit"><i class="fa fa fa-sign-out"></i> 退出</a>
+            </div>
+            <div class="row J_mainContent" id="content-main">
+                <iframe class="J_iframe" name="iframe0" width="100%" height="100%" src="index-home.html" frameborder="0" data-id="index-home.html" seamless></iframe>
+            </div>
+            <div class="footer">
+                <div class="pull-right">请使用IE10及以上内核浏览器，建议使用Chrome、Firefox、360最新版等。</div>
+                <div class="pull-left">Copyright © 2018 马鞍山华彤网络科技有限公司 . All rights reserved.</div>
+            </div>
+        </div>
+        <!--右侧部分结束-->
+
+    </div>
+
+    <!-- 全局js -->
+    <script src="js/jquery.min.js?v=2.1.4"></script>
+    <script src="js/bootstrap.min.js?v=3.3.6"></script>
+    <script src="js/plugins/metisMenu/jquery.metisMenu.js"></script>
+    <script src="js/plugins/slimscroll/jquery.slimscroll.min.js"></script>
+    <script src="js/plugins/layer/layer.min.js"></script>
+
+    <!-- 自定义js -->
+    <script src="js/global.js?v=4.1.0"></script>
+    <script type="text/javascript" src="js/contabs.js"></script>
+
+
+
+</body>
+
+</html>

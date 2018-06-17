@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam管理后台</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link rel="stylesheet" href="../../css/plugins/bootstrap-daterangepicker/daterangepicker.css">
+    <link href="../../css/animate.css" rel="stylesheet">
+    <link href="../../css/style.css?v=4.1.0" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-6">
+            <ol class="breadcrumb">
+                <li>首页</li>
+                <li>订单管理</li>
+                <li><strong>CDK充值订单管理</strong></li>
+            </ol>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+
+    <div class="wrapper wrapper-content">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="form-inline">
+                    <div class="form-group margin-top-xs">
+                        <select name="" id="" class="form-control">
+                            <option selected="" value="按条件查询">按条件查询</option>
+                            <option value="购买商户ID">购买商户ID</option>
+                            <option value="购买商户名称">购买商户名称</option>
+                            <option value="平台订单号">平台订单号</option>
+                            <option value="Steam交易单号">Steam交易单号</option>
+                            <option value="CDK兑换码">CDK兑换码</option>
+                        </select>
+                        <input type="text" class="form-control" placeholder="请输入搜索关键字">
+                    </div>
+                    <div class="form-group margin-top-xs">
+                        <select name="" class="form-control" id="">
+                            <option selected="" value="请选择商品">请选择商品</option>
+                            <option value="商品名称">商品名称</option>
+                            <option value="商品ID">商品ID</option>
+                        </select>
+                    </div>
+                    <div class="form-group margin-top-xs">
+                        <select name="" class="form-control" id="">
+                            <option selected="" value="请选择渠道来源">请选择渠道来源</option>
+                            <option value="淘宝">淘宝</option>
+                            <option value="天猫">天猫</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <p class="form-control-static">按玩家账号</p>
+                        <input type="text" class="form-control" placeholder="请输入按玩家账号">
+                    </div>
+                </div>
+                <div class="form-inline margin-top">
+                    <div class="form-group">
+                        <p class="form-control-static">按直储账号</p>
+                        <input type="text" class="form-control" placeholder="请输入直储账号">
+                    </div>
+                    <div class="form-group">
+                        <p class="form-control-static">按店铺名称</p>
+                        <input type="text" class="form-control" placeholder="请输入按店铺名称">
+                    </div>
+                </div>
+                <div class="form-inline margin-top">
+                    <div class="form-group">
+                        <select name="" id="" class="form-control">
+                            <option selected="" value="请选择时间条件">请选择时间条件</option>
+                            <option value="下单时间">下单时间</option>
+                            <option value="接单时间">接单时间</option>
+                            <option value="充值时间">充值时间</option>
+                        </select>
+                        <input type="text" class="form-control" id="daterange" style="min-width: 312px;">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-info">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="example">
+                    <div class=" hidden-xs" id="exampleToolbar" role="group">
+                        <a href="javascript:void(0);" type="button" class="btn btn-success">
+                            导出EXCEL
+                        </a>
+                    </div>
+                    <table id="exampleTableToolbar" class="text-center table-hover table-striped" data-height="400">
+                        <thead>
+                            <tr>
+                                <th data-field="col-01" class="text-center">供货商户ID</th>
+                                <th data-field="col-02" class="text-center">供货商户名称</th>
+                                <th data-field="col-03" class="text-center">供货商户身份</th>
+                                <th data-field="col-04" class="text-center">CDK充值码</th>
+                                <th data-field="col-05" class="text-center">平台订单号</th>
+                                <th data-field="col-06" class="text-center">Steam交易单号</th>
+                                <th data-field="col-07" class="text-center">商品ID</th>
+                                <th data-field="col-08" class="text-center">商品名称</th>
+                                <th data-field="col-09" class="text-center">商品类型</th>
+                                <th data-field="col-10" class="text-center">商品面值</th>
+                                <th data-field="col-11" class="text-center">商品数量</th>
+                                <th data-field="col-12" class="text-center">玩家账号</th>
+                                <th data-field="col-13" class="text-center">好友链接</th>
+                                <th data-field="col-14" class="text-center">直储账号</th>
+                                <th data-field="col-15" class="text-center">直储账号余额</th>
+                                <th data-field="col-17" class="text-center">销售价</th>
+                                <th data-field="col-18" class="text-center">进货价</th>
+                                <th data-field="col-19" class="text-center">手续费</th>
+                                <th data-field="col-20" class="text-center">利润</th>
+                                <th data-field="col-21" class="text-center">购买商户ID</th>
+                                <th data-field="col-22" class="text-center">购买商户名称</th>
+                                <th data-field="col-23" class="text-center">购买商户身份</th>
+                                <th data-field="col-24" class="text-center">购买商户充值方式</th>
+                                <th data-field="col-26" class="text-center">下单时间</th>
+                                <th data-field="col-27" class="text-center">接单时间</th>
+                                <th data-field="col-28" class="text-center">充值时间</th>
+                                <th data-field="col-29" class="text-center">日志</th>
+                                <th data-field="col-30" class="text-center">渠道来源</th>
+                                <th data-field="col-31" class="text-center">店铺名称</th>
+                                <th data-field="col-32" class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>234</td>
+                                <td>张三</td>
+                                <td>经销商</td>
+                                <td>8456134856515</td>
+                                <td>94856134856</td>
+                                <td>89456148561313</td>
+                                <td>122</td>
+                                <td>绝地求生</td>
+                                <td>直储</td>
+                                <td>93</td>
+                                <td>1</td>
+                                <td>12354t</br>
+                                    <small><a href="javascript:void(0)"  data-container="body" data-placement="bottom"  data-toggle="popover" title="玩家密码" data-content="asdfasdf">查看密码</a></small>
+                                </td>
+                                <td><span>52147852144</span><br>
+                                    <small><a href="javascript:void(0)"  data-container="body" data-placement="bottom"  data-toggle="popover" title="玩家好友链接" data-content="https://store.Steampowered.com/">点击查看详细</a></small>
+                                </td>
+                                <td>tianhong</td>
+                                <td>50.00</td>
+                                <td></td>
+                                <td></td>
+                                <td>0.465</td>
+                                <td></td>
+
+                                <td>123</td>
+                                <td>张三</td>
+                                <td>经销商</td>
+                                <td>直储自上架</td>
+                                <td>2018-05-15</br>23:16:15</td>
+                                <td>2018-05-15</br>23:16:15</td>
+                                <td>2018-05-15</br>23:16:15</td>
+                                <td></td>
+                                <td>淘宝</td>
+                                <td>淘宝店一</td>
+                                <td>
+                                    <button role="button" class="btn btn-primary btn-xs margin-bottom-xs">成功</button>
+                                    <button role="button" class="btn btn-primary btn-xs margin-bottom-xs">失败</button>
+                                    <button role="button" class="btn btn-primary btn-xs margin-bottom-xs">重新通知</button>
+                                    <button role="button" class="btn btn-primary btn-xs margin-bottom-xs" data-toggle="modal" data-target="#orderTmallDetail">详情</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--详情弹窗-->
+    <div class="modal" id="orderTmallDetail" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">淘宝天猫订单详情</h4>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-center">供货商信息</h5>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>供货商户ID</strong></div>
+                            <div class="col-sm-3">123</div>
+                            <div class="col-sm-3 text-right"><strong>供货商户名称</strong></div>
+                            <div class="col-sm-3">张三</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>供货商户身份</strong></div>
+                            <div class="col-sm-3">经销商</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="text-center">购买方信息</h5>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>购买商户ID</strong></div>
+                            <div class="col-sm-3">123</div>
+                            <div class="col-sm-3 text-right"><strong>购买商户名称</strong></div>
+                            <div class="col-sm-3">张三</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>购买商户身份</strong></div>
+                            <div class="col-sm-3">经销商</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="text-center">订单信息</h5>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>CDK充值码</strong></div>
+                            <div class="col-sm-3">894651546113</div>
+                            <div class="col-sm-3 text-right"><strong>平台订单编号</strong></div>
+                            <div class="col-sm-3">94856134856</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>Steam交易编号</strong></div>
+                            <div class="col-sm-3">95694856131</div>
+                            <div class="col-sm-3 text-right"><strong>商品编号</strong></div>
+                            <div class="col-sm-3">9485613485</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>商品名称</strong></div>
+                            <div class="col-sm-3">绝地求生</div>
+                            <div class="col-sm-3 text-right"><strong>商品类型</strong></div>
+                            <div class="col-sm-3">直储</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>面值</strong></div>
+                            <div class="col-sm-3">100.00</div>
+                            <div class="col-sm-3 text-right"><strong>商品数量</strong></div>
+                            <div class="col-sm-3">1</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>直储账号</strong></div>
+                            <div class="col-sm-3">12345</div>
+                            <div class="col-sm-3 text-right"><strong>直储账号余额</strong></div>
+                            <div class="col-sm-3">50.00</div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>销售价</strong></div>
+                            <div class="col-sm-3">100.00</div>
+                            <div class="col-sm-3 text-right"><strong>进货价</strong></div>
+                            <div class="col-sm-3">-</div>
+                        </div>
+                        <div class="form-group">
+
+                            <div class="col-sm-3 text-right"><strong>手续费</strong></div>
+                            <div class="col-sm-3">5.00</div>
+                            <div class="col-sm-3 text-right"><strong>利润</strong></div>
+                            <div class="col-sm-3">-</div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>下单时间</strong></div>
+                            <div class="col-sm-3">2018-05-12 18:15:16</div>
+                            <div class="col-sm-3 text-right"><strong>接单时间</strong></div>
+                            <div class="col-sm-3">2018-05-12 18:15:16</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>渠道来源</strong></div>
+                            <div class="col-sm-3">淘宝</div>
+                            <div class="col-sm-3 text-right"><strong>店铺名称</strong></div>
+                            <div class="col-sm-3">店铺一</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>购买商户充值方式</strong></div>
+                            <div class="col-sm-3">直储自上架</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="text-center">充值信息</h5>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>玩家账号</strong></div>
+                            <div class="col-sm-3">nhgb123</div>
+                            <div class="col-sm-3 text-right"><strong>玩家密码</strong></div>
+                            <div class="col-sm-3">XXXXXXX</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>玩家好友链接</strong></div>
+                            <div class="col-sm-3">-</div>
+                            <div class="col-sm-3 text-right"><strong>充值时间</strong></div>
+                            <div class="col-sm-3">2018-05-12 18:15:17</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="text-center">卡密信息</h5>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right"><strong>卡号</strong></div>
+                            <div class="col-sm-3">84561265</div>
+                            <div class="col-sm-3 text-right"><strong>密码</strong></div>
+                            <div class="col-sm-3">85132XXXXXX</div>
+                        </div>
+                    </div>
+                    <hr>
+                    <h5 class="text-center">错误日志</h5>
+                    <p class="text-center">asdfasdfasdfasdfasdfasdfasdfasdfasdf</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--详情弹窗-->
+
+    <!-- 全局js -->
+    <script src="../../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="../../js/content.js?v=1.0.0"></script>
+    <script src="../../js/contabs-sub.js"></script>
+    <!-- 第三方插件 -->
+    <script src="../../js/plugins/pace/pace.min.js"></script>
+    <!-- Bootstrap table -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-CN.min.js"></script>
+    <!-- Sweet alert -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../../js/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+    <script src="../../js/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!--clipboard-->
+    <script src="../../js/plugins/clipboard/clipboard.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //dataTimePicker
+            $('#daterange').daterangepicker({
+                "autoApply": true,
+                "timePicker": true,
+                "timePicker24Hour": true,
+                "timePickerSeconds": true,
+                ranges: {
+                    '今天': [moment(), moment()],
+                    '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '过去7天': [moment().subtract(6, 'days'), moment()],
+                    '过去30天': [moment().subtract(29, 'days'), moment()],
+                    '这个月': [moment().startOf('month'), moment().endOf('month')],
+                    '上个月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                locale : {
+                    "format" : 'YYYY-MM-DD HH:mm:ss',
+                    "separator" : " 至 ",//
+                    "applyLabel" : "确定",
+                    "cancelLabel" : "取消",
+                    "fromLabel" : "起始时间",
+                    "toLabel" : "结束时间'",
+                    "customRangeLabel" : "自定义",
+                    "weekLabel" : "W",
+                    "daysOfWeek" : ["日", "一", "二", "三", "四", "五", "六"],
+                    "monthNames" : ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                    "firstDay" : 1
+                }
+            }, function(start, end, label) {
+                console.log('您选择的时间: ' + start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            });
+
+            //data-table
+            $('#exampleTableToolbar').bootstrapTable({
+                toolbar: '#exampleToolbar',
+                showColumns: true,
+                iconSize: 'outline',
+                icons: {
+                    columns: 'glyphicon-list'
+                },
+                pagination:true,
+                sidePagination:'client',
+                pageNumber:1,
+                pageSize:10,
+                buttonsAlign:'left',
+                toolbarAlign:'right'
+            });
+
+            //sweetalert
+            //popover
+            $('[data-toggle="popover"]').popover()
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>

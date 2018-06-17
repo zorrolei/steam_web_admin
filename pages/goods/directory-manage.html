@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam管理后台</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="../../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../../css/animate.css" rel="stylesheet">
+    <link href="../../css/style.css?v=4.1.0" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-6">
+            <ol class="breadcrumb">
+                <li>首页</li>
+                <li>商品管理</li>
+                <li><strong>目录管理</strong></li>
+            </ol>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+
+    <div class="wrapper wrapper-content">
+        <div class="ibox float-e-margins">
+            <div class="ibox-title">
+                <h5>添加一级目录</h5>
+            </div>
+            <div class="ibox-content">
+                <div class="margin-bottom-xs form-inline">
+                    <div class="form-group">
+                        <p class="form-control-static">目录名称</p>
+                        <input type="text" class="form-control" placeholder="请输入目录名称">
+                    </div>
+                    <div class="form-group">
+                        <p class="form-control-static">顺序号</p>
+                        <input type="text" class="form-control" placeholder="请输入顺序号">
+                    </div>
+                    <div class="form-group">
+                        <p class="form-control-static">目录状态</p>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 开启
+                        </label>
+                        <label class="radio-inline">
+                            <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 关闭
+                        </label>
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-info add-button">添加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="example">
+                    <table id="exampleTableToolbar" class="text-center table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th data-field="col-01" class="text-center">目录名称</th>
+                                <th data-field="col-02" class="text-center" data-width="200">顺序号</th>
+                                <th data-field="col-03" class="text-center">状态</th>
+                                <th data-field="col-04" class="text-center">添加下级目录</th>
+                                <th data-field="col-05" class="text-center">包含商品</th>
+                                <th data-field="col-06" class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>单机版游戏</td>
+                                <td><input type="text" class="form-control" value="10000"></td>
+                                <td><span class="text-info">开启</span></td>
+                                <td><button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#addSubDIR">添加二级目录</button></td>
+                                <td><a href="#">包含商品</a></td>
+                                <td>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#editDIR">修改</button>
+                                    <button class="btn btn-danger margin-bottom-xs btn-xs delete-button">删除</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>单机版游戏</td>
+                                <td><input type="text" class="form-control" value="10000"></td>
+                                <td><span class="text-danger">关闭</span></td>
+                                <td><button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#addSubDIR">添加二级目录</button></td>
+                                <td><a href="#">包含商品</a></td>
+                                <td>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#editDIR">修改</button>
+                                    <button class="btn btn-danger margin-bottom-xs btn-xs delete-button">删除</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--添加二级目录-->
+    <div class="modal" id="addSubDIR" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加二级目录</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">二级目录名称</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="inputEmail3" placeholder="请输入二级目录名称">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info">添加</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--添加二级目录-->
+
+    <!--修改目录-->
+    <div class="modal" id="editDIR" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改目录</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">目录名称</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="inputEmail3" placeholder="请输入一级目录名称">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">顺序号</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="inputEmail3" value="10000" placeholder="请输入顺序号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">目录状态</label>
+                            <div class="col-sm-5">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions2" id="inlineRadio1" value="option1" checked> 开启
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2"> 关闭
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-info">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--修改目录-->
+
+    <!-- 全局js -->
+    <script src="../../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="../../js/content.js?v=1.0.0"></script>
+    <script src="../../js/contabs-sub.js"></script>
+    <!-- 第三方插件 -->
+    <script src="../../js/plugins/pace/pace.min.js"></script>
+    <!-- Bootstrap table -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-CN.min.js"></script>
+    <!-- Sweet alert -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //data-table
+            $('#exampleTableToolbar').bootstrapTable({
+                showColumns: true,
+                iconSize: 'outline',
+                icons: {
+                    columns: 'glyphicon-list'
+                },
+                pagination:true,
+                sidePagination:'client',
+                pageNumber:1,
+                pageSize:10,
+                buttonsAlign:'left',
+                toolbarAlign:'right'
+            });
+            //sweetalert
+            $('.add-button').click(function(){
+                swal("添加成功", "目录添加成功", "success");
+            });
+            $('.delete-button').click(function () {
+                swal({
+                        title: "确认删除",
+                        text: "确定删除这条记录吗",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "取消",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定删除",
+                        closeOnConfirm: false
+                    },
+                    function(){
+                        swal("删除成功", "记录删除成功", "success");
+                    });
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>

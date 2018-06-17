@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam管理后台</title>
+
+    <link rel="shortcut icon" href="favicon.ico"> <link href="../../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../../css/animate.css" rel="stylesheet">
+    <link href="../../css/style.css?v=4.1.0" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-6">
+            <ol class="breadcrumb">
+                <li>首页</li>
+                <li>系统管理</li>
+                <li><strong>角色权限管理</strong></li>
+            </ol>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+
+    <div class="wrapper wrapper-content">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="margin-bottom-xs form-inline">
+                    <div class="form-group">
+                        <p class="form-control-static">角色名称</p>
+                        <input type="text" class="form-control" placeholder="请输入角色名称">
+                    </div>
+                    <div class="form-group">
+                        <button class="btn btn-info">添加</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="example">
+                    <table id="exampleTableToolbar" class="text-center table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th data-field="col-01" class="text-center">编号</th>
+                                <th data-field="col-02" class="text-center">角色名称</th>
+                                <th data-field="col-08" class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>超级管理员</td>
+                                <td>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#editRole">权限设置</button>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#editRoleName">修改</button>
+                                    <button class="btn btn-danger margin-bottom-xs btn-xs delete-button">删除</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>财务管理员</td>
+                                <td>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#editRole">权限设置</button>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#editRoleName">修改</button>
+                                    <button class="btn btn-danger margin-bottom-xs btn-xs delete-button">删除</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--修改角色名-->
+    <div class="modal" id="editRoleName" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改角色名称</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <label for="inputEmail3" class="col-sm-4 control-label">当前角色名称</label>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" id="inputEmail3" value="超级管理员" placeholder="请输入管理员账号">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-info">修改</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--修改角色名-->
+
+    <!--修改权限-->
+    <div class="modal" id="editRole" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改角色权限</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="checkbox">
+                        <input id="checkbox100" type="checkbox">
+                        <label for="checkbox100"><strong>所有权限</strong></label>
+                    </div>
+                    <hr>
+                    <div class="checkbox">
+                        <input id="checkbox101" type="checkbox">
+                        <label for="checkbox101"><strong>系统管理(全选)</strong></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox102" type="checkbox">
+                                <label for="checkbox102">添加管理员</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox103" type="checkbox">
+                                <label for="checkbox103">管理员操作</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox104" type="checkbox">
+                                <label for="checkbox104">管理员角色权限</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox105" type="checkbox">
+                                <label for="checkbox105">查看系统日志</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="checkbox">
+                        <input id="checkbox200" type="checkbox">
+                        <label for="checkbox200"><strong>商品管理(全选)</strong></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox201" type="checkbox">
+                                <label for="checkbox201">目录查看</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox202" type="checkbox">
+                                <label for="checkbox202">目录操作</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox203" type="checkbox">
+                                <label for="checkbox203">添加Steam商品</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox204" type="checkbox">
+                                <label for="checkbox204">查看Steam商品列表</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox205" type="checkbox">
+                                <label for="checkbox205">Steam商品列表操作</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox206" type="checkbox">
+                                <label for="checkbox206">Steam账号查看</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox207" type="checkbox">
+                                <label for="checkbox207">Steam账号操作</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox208" type="checkbox">
+                                <label for="checkbox208">便宜货源导卡记录</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox209" type="checkbox">
+                                <label for="checkbox209">便宜货源取卡记录</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox209" type="checkbox">
+                                <label for="checkbox209">便宜货源库存管理</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox209" type="checkbox">
+                                <label for="checkbox209">库存报警列表</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox209" type="checkbox">
+                                <label for="checkbox209">上卡代理区域管理</label>
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
+                    <div class="checkbox">
+                        <input id="checkbox300" type="checkbox">
+                        <label for="checkbox300"><strong>财务管理(全选)</strong></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox301" type="checkbox">
+                                <label for="checkbox301">查看商户财务管理</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox302" type="checkbox">
+                                <label for="checkbox302">操作财务加减款</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox303" type="checkbox">
+                                <label for="checkbox303">查看财务加减款记录</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox304" type="checkbox">
+                                <label for="checkbox304">交易额度划拨</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox305" type="checkbox">
+                                <label for="checkbox305">系统划拨资金变动明细</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox306" type="checkbox">
+                                <label for="checkbox306">保证金资金变动明细</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox307" type="checkbox">
+                                <label for="checkbox307">保证金在线充值记录</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox308" type="checkbox">
+                                <label for="checkbox308">保证金在线充值掉单管理</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox309" type="checkbox">
+                                <label for="checkbox309">交易额度划拨记录</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox310" type="checkbox">
+                                <label for="checkbox310">交易额度资金变动明细</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="checkbox">
+                        <input id="checkbox400" type="checkbox">
+                        <label for="checkbox400"><strong>订单管理(全选)</strong></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox401" type="checkbox">
+                                <label for="checkbox401">淘宝/天猫订单信息</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox402" type="checkbox">
+                                <label for="checkbox402">系统淘宝天猫掉单管理</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox402" type="checkbox">
+                                <label for="checkbox402">CDK充值订单管理</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox402" type="checkbox">
+                                <label for="checkbox402">CDK充值掉单管理</label>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="checkbox">
+                        <input id="checkbox300" type="checkbox">
+                        <label for="checkbox300"><strong>数据统计(全选)</strong></label>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox401" type="checkbox">
+                                <label for="checkbox401">商户店铺销售报表</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox402" type="checkbox">
+                                <label for="checkbox402">经销商下级销售统计报表</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox402" type="checkbox">
+                                <label for="checkbox402">商品销售统计报表</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox402" type="checkbox">
+                                <label for="checkbox402">商品销售报表</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox402" type="checkbox">
+                                <label for="checkbox402">直储账号交易统计</label>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="checkbox">
+                                <input id="checkbox402" type="checkbox">
+                                <label for="checkbox402">直储账号余额凌晨统计</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-info">保存</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--修改权限-->
+
+    <!-- 全局js -->
+    <script src="../../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="../../js/content.js?v=1.0.0"></script>
+    <script src="../../js/contabs-sub.js"></script>
+    <!-- 第三方插件 -->
+    <script src="../../js/plugins/pace/pace.min.js"></script>
+    <!-- Bootstrap table -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-CN.min.js"></script>
+    <!-- Sweet alert -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //data-table
+            $('#exampleTableToolbar').bootstrapTable({
+                showColumns: true,
+                iconSize: 'outline',
+                icons: {
+                    columns: 'glyphicon-list'
+                },
+                pagination:true,
+                sidePagination:'client',
+                pageNumber:1,
+                pageSize:10,
+                buttonsAlign:'left',
+                toolbarAlign:'right'
+            });
+            //sweetalert
+            $('.delete-button').click(function () {
+                swal({
+                        title: "确认删除",
+                        text: "确定删除这条记录吗",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "取消",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定删除",
+                        closeOnConfirm: false
+                    },
+                    function(){
+                        swal("删除成功", "记录删除成功", "success");
+                    });
+            });
+
+        });
+    </script>
+
+
+</body>
+
+</html>

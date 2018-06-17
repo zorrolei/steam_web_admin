@@ -1,0 +1,627 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam管理后台</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link rel="stylesheet" href="../../css/plugins/bootstrap-daterangepicker/daterangepicker.css">
+    <link href="../../css/animate.css" rel="stylesheet">
+    <link href="../../css/style.css?v=4.1.0" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-6">
+            <ol class="breadcrumb">
+                <li>首页</li>
+                <li>商品管理</li>
+                <li><strong>Steam账号列表</strong></li>
+            </ol>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+
+    <div class="wrapper wrapper-content">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="form-inline">
+                    <div class="form-group margin-bottom-xs">
+                        <select name="" id="" class="form-control">
+                            <option value="按条件查询">按条件查询</option>
+                            <option value="编号">编号</option>
+                            <option value="steam账号">steam账号</option>
+                        </select>
+                        <input type="text" class="form-control" placeholder="请输入搜索关键字">
+                    </div>
+                    <div class="form-group margin-bottom-xs">
+                        <select name="" id="" class="form-control">
+                            <option value="请选择账号状态">请选择账号状态</option>
+                            <option value="可用">可用</option>
+                            <option value="停用">停用</option>
+                        </select>
+                    </div>
+                    <div class="form-group margin-bottom-xs">
+                        <select name="" id="" class="form-control">
+                            <option selected="" value="请选择是否支持全部商品">是否支持全部商品</option>
+                            <option value="是">是</option>
+                            <option value="否">否</option>
+                        </select>
+                    </div>
+                    <div class="form-group margin-bottom-xs">
+                        <select name="" id="" class="form-control">
+                            <option selected="" value="请选择账号验证状态">账号验证状态</option>
+                            <option value="已验证">已验证</option>
+                            <option value="待验证">待验证</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-inline margin-top">
+                    <div class="form-group margin-bottom-xs">
+                        <p class="form-control-static">按绑定时间</p>
+                        <input type="text" class="form-control" id="daterange" style="min-width:312px;">
+                    </div>
+                    <div class="form-group margin-bottom-xs">
+                        <button class="btn btn-info add-button">查询</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="example">
+                    <div class="hidden-xs" id="exampleToolbar" role="group">
+                        <a href="javascript:void(0);" type="button" class="btn btn-success" data-toggle="modal" data-target="#addAcount">
+                            手动添加账号
+                        </a>
+                        <a href="javascript:void(0);" type="button" class="btn btn-success"  data-toggle="modal" data-target="#batchAddAcount">
+                            批量导入账号
+                        </a>
+                    </div>
+                    <table id="exampleTableToolbar" class="text-center table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th data-field="col-01" class="text-center">编号</th>
+                                <th data-field="col-02" class="text-center">Steam账号</th>
+                                <th data-field="col-03" class="text-center">Steam密码</th>
+                                <th data-field="col-04" class="text-center">账号余额（元）</th>
+                                <th data-field="col-05" class="text-center">绑定时间</th>
+                                <th data-field="col-06" class="text-center">状态</th>
+                                <th data-field="col-07" class="text-center">是否支持全部商品</th>
+                                <th data-field="col-08" class="text-center">账号验证状态</th>
+                                <th data-field="col-09" class="text-center">验证日志</th>
+                                <th data-field="col-10" class="text-center">报警额度</th>
+                                <th data-field="col-11" class="text-center">操作</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>0001</td>
+                                <td>123123123</td>
+                                <td>XXXXX</td>
+                                <td>2000</td>
+                                <td>2018-15-16 24:15:16</td>
+                                <td>可用</td>
+                                <td>否</td>
+                                <td>已验证</td>
+                                <td></td>
+                                <td>500</td>
+                                <td>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#verifyAcount">验证账号</button>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#getToken"> 获取令牌</button>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#alarmSettings">  报警设置</button>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#designatedGoods">  指定充值商品</button>
+                                    <button class="btn btn-primary margin-bottom-xs btn-xs" data-toggle="modal" data-target="#editAccount">  修改</button>
+                                    <button class="btn btn-danger margin-bottom-xs btn-xs delete-button">删除</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--批量添加账号-->
+    <div class="modal" id="batchAddAcount" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">批量添加Steam平台账号</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">导入账号</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <div class="input-group">
+                                    <input type="text" id="photoCover" class="form-control" placeholder="选择文件">
+                                    <span class="input-group-btn">
+                                <button class="btn btn-success" type="button" onclick="$('input[id=lefile]').click();">选择</button>
+                              </span>
+                                </div><!-- /input-group -->
+                                <input id="lefile" type="file" style="display:none">
+                            </div>
+                            <div class="col-sm-3">
+                                <button class="btn btn-primary" disabled>上传</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-8 col-sm-push-4">请上传TXT格式文件</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">状态</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option1" checked> 可用
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions2" id="inlineRadio2" value="option2"> 冻结
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定添加</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--批量添加账号-->
+
+    <!--添加账号-->
+    <div class="modal" id="addAcount" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">添加Steam平台账号</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">Steam平台账号</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" placeholder="请输入Steam平台账号">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">Steam平台密码</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" placeholder="请输入Steam平台密码">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">状态</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 可用
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option2"> 冻结
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定添加</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--添加账号-->
+
+
+
+    <!--验证账号-->
+    <div class="modal" id="verifyAcount" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">验证账号</h4>
+                </div>
+                <div class="modal-body">
+                    <h4 class="text-center margin-bottom">该账号未绑定令牌，请绑定</h4>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">手机号</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" placeholder="请输入手机号">
+                            </div>
+                            <div class="col-sm-4">
+                                <button class="btn btn-primary">发送验证码</button>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 text-right">
+                                <p class="form-control-static">验证码</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" placeholder="请输入收到的验证码">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!--情况1-->
+                <!--情况2-->
+                <!--<div class="modal-body">-->
+                <!--<h4 class="text-center">您的账号已经绑定令牌/手机/邮箱安全验证，请解除后重新验证。</h4>-->
+                <!--</div>-->
+                <!--情况2-->
+                <!--情况3-->
+                <!--<div class="modal-body">-->
+                <!--<h4 class="text-center">验证成功，账号可正常使用，账号余额已刷新。</h4>-->
+                <!--</div>-->
+                <!--情况3-->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-info">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--指定直储账号-->
+
+    <!--获取令牌-->
+    <div class="modal" id="getToken" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">获取令牌</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">令牌验证码</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <p class="form-control-static"><span id="token">XXXXX0XXXXXXXX</span>
+                                    <a href="javascript:void(0)" class="copy">点击复制</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--获取令牌-->
+    <!--报警设置-->
+    <div class="modal" id="alarmSettings" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">账号余额报警设置</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">Steam平台账号</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">XXXXXXXXXXXXXX</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">报警值</p>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" placeholder="请输入报警金额">
+                            </div>
+                            <div class="col-sm-3">
+                                <p class="form-control-static">元</p>
+                            </div>
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--报警设置-->
+
+    <!--指定充值商品-->
+    <div class="modal" id="designatedGoods" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">指定充值商品</h4>
+                </div>
+                <div class="modal-body">
+                    <h4>选择指定充值商品</h4>
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-2 text-right">
+                                <p class="form-control-static">Steam平台账号</p>
+                            </div>
+                            <div class="col-sm-10">
+                                <p class="form-control-static">XXXXXXXXXXXXX</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2 text-right">
+                                <p class="form-control-static">商品一</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <select name="" class="form-control" id="">
+                                    <option value="目录一">目录一</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <select name="" class="form-control" id="">
+                                    <option value="目录二">目录二</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <select name="" class="form-control" id="">
+                                    <option value="商品名称">商品名称</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-1">
+                                <p class="form-control-static">
+                                    <a href="#">删除</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2 text-right">
+                                <p class="form-control-static">商品二</p>
+                            </div>
+                            <div class="col-sm-3">
+                                <select name="" class="form-control" id="">
+                                    <option value="目录一">目录一</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <select name="" class="form-control" id="">
+                                    <option value="目录二">目录二</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-3">
+                                <select name="" class="form-control" id="">
+                                    <option value="商品名称">商品名称</option>
+                                </select>
+                            </div>
+                            <div class="col-sm-1">
+                                <p class="form-control-static">
+                                    <a href="#">删除</a>
+                                </p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-3 col-sm-push-2">
+                                <button class="btn btn-primary">添加新商品</button>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--指定充值商品-->
+
+    <!--修改Steam平台账号-->
+    <div class="modal" id="editAccount" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">修改账号密码</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-horizontal">
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">编号</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">12341234123423</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">Steam平台账号</p>
+                            </div>
+                            <div class="col-sm-8">
+                                <p class="form-control-static">845613cvb28451</p>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">Steam平台密码</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <input type="text" class="form-control" value="9845613242" placeholder="请输入Steam平台密码">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-4 text-right">
+                                <p class="form-control-static">状态</p>
+                            </div>
+                            <div class="col-sm-5">
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions3" id="inlineRadio3" value="option1" checked> 可用
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="inlineRadioOptions3" id="inlineRadio3" value="option2"> 冻结
+                                </label>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    <button type="button" class="btn btn-primary">确定</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--修改Steam平台账号-->
+
+    <!-- 全局js -->
+    <script src="../../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="../../js/content.js?v=1.0.0"></script>
+    <script src="../../js/contabs-sub.js"></script>
+    <!-- 第三方插件 -->
+    <script src="../../js/plugins/pace/pace.min.js"></script>
+    <!-- Bootstrap table -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-CN.min.js"></script>
+    <!-- Sweet alert -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../../js/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+    <script src="../../js/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!--clipboard-->
+    <script src="../../js/plugins/clipboard/clipboard.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //dataTimePicker
+            $('#daterange').daterangepicker({
+                "autoApply": true,
+                "timePicker": true,
+                "timePicker24Hour": true,
+                "timePickerSeconds": true,
+                ranges: {
+                    '今天': [moment(), moment()],
+                    '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '过去7天': [moment().subtract(6, 'days'), moment()],
+                    '过去30天': [moment().subtract(29, 'days'), moment()],
+                    '这个月': [moment().startOf('month'), moment().endOf('month')],
+                    '上个月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                locale : {
+                    "format" : 'YYYY-MM-DD HH:mm:ss',
+                    "separator" : " 至 ",//
+                    "applyLabel" : "确定",
+                    "cancelLabel" : "取消",
+                    "fromLabel" : "起始时间",
+                    "toLabel" : "结束时间'",
+                    "customRangeLabel" : "自定义",
+                    "weekLabel" : "W",
+                    "daysOfWeek" : ["日", "一", "二", "三", "四", "五", "六"],
+                    "monthNames" : ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                    "firstDay" : 1
+                }
+            }, function(start, end, label) {
+                console.log('您选择的时间: ' + start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            });
+            //data-table
+            $('#exampleTableToolbar').bootstrapTable({
+                toolbar: '#exampleToolbar',
+                showColumns: true,
+                iconSize: 'outline',
+                icons: {
+                    columns: 'glyphicon-list'
+                },
+                pagination:true,
+                sidePagination:'client',
+                pageNumber:1,
+                pageSize:10,
+                buttonsAlign:'left',
+                toolbarAlign:'right'
+            });
+            //sweetalert
+            $('.add-button').click(function(){
+                swal("添加成功", "目录添加成功", "success");
+            });
+            $('.delete-button').click(function () {
+                swal({
+                        title: "确认删除",
+                        text: "确定删除这条记录吗",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "取消",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定删除",
+                        closeOnConfirm: false
+                    },
+                    function(){
+                        swal("删除成功", "记录删除成功", "success");
+                    });
+            });
+
+        });
+    </script>
+
+    <script>
+        //一键复制
+        var c = document.getElementById("token");
+        var s=c.innerHTML;
+        var clipboard = new Clipboard('.copy', {
+            text: function() {
+                return s;
+            }
+        });
+
+        clipboard.on('success', function(e) {
+            alert("复制成功");
+        });
+
+        clipboard.on('error', function(e) {
+            alert("复制失败，请手动复制");
+        });
+    </script>
+</body>
+
+</html>

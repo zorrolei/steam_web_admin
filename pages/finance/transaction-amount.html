@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Steam管理后台</title>
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link href="../../css/bootstrap.min.css?v=3.3.6" rel="stylesheet">
+    <link href="../../css/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../../css/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <!-- awesome-bootstrap-checkbox -->
+    <link href="../../css/plugins/awesome-bootstrap-checkbox/awesome-bootstrap-checkbox.css" rel="stylesheet">
+    <!-- Sweet Alert -->
+    <link href="../../css/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link rel="stylesheet" href="../../css/plugins/bootstrap-daterangepicker/daterangepicker.css">
+    <link href="../../css/animate.css" rel="stylesheet">
+    <link href="../../css/style.css?v=4.1.0" rel="stylesheet">
+
+
+</head>
+
+<body class="gray-bg">
+    <div class="row wrapper border-bottom white-bg page-heading">
+        <div class="col-sm-6">
+            <ol class="breadcrumb">
+                <li>首页</li>
+                <li>财务管理</li>
+                <li><strong>交易额度划拨</strong></li>
+            </ol>
+        </div>
+        <div class="col-sm-6">
+
+        </div>
+    </div>
+
+
+    <div class="wrapper wrapper-content">
+        <div class="ibox float-e-margins">
+            <div class="ibox-content">
+                <div class="form-horizontal">
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">系统账户金额</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">55000 元</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">选择接收商户</label>
+                        <div class="col-sm-10 form-inline">
+                            <input type="text" class="form-control" placeholder="商户ID">
+                            <input type="text" class="form-control" placeholder="商户用户名">
+                            <button class="btn btn-primary" data-toggle="modal" data-target="#selectMerchants">选择</button>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">划拨金额</label>
+                        <div class="col-sm-4 form-inline">
+                            <input type="text" class="form-control" id="inputEmail3" placeholder="请输入划拨金额"> 元
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">划拨折扣</label>
+                        <div class="col-sm-4 form-inline">
+                            <input type="text" class="form-control" id="inputEmail3" placeholder="请输入划拨折扣"> %
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">实收金额</label>
+                        <div class="col-sm-4">
+                            <p class="form-control-static">50000 元</p>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputEmail3" class="col-sm-2 control-label">备注</label>
+                        <div class="col-sm-4">
+                            <textarea class="form-control" rows="3"></textarea>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-10">
+                            <button type="submit" class="btn btn-primary">提交</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--选择接收商户-->
+    <div class="modal" id="selectMerchants" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">选择接收商户</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="form-inline">
+                        <select name="" id="" class="form-control">
+                            <option selected="" value="按条件查询">按条件查询</option>
+                            <option value="商户ID">商户ID</option>
+                            <option value="商户用户名">商户用户名</option>
+                            <option value="商户名称">商户名称</option>
+                        </select>
+                        <input type="text" class="form-control" placeholder="请输入搜索关键字">
+                        <button class="btn btn-info">查询</button>
+                    </div>
+                    <hr>
+                    <table id="exampleTableToolbar" class="text-center table-hover table-striped">
+                        <thead>
+                            <tr>
+                                <th data-field="col-01" class="text-center">商户编号</th>
+                                <th data-field="col-02" class="text-center">用户名</th>
+                                <th data-field="col-03" class="text-center">商户名称</th>
+                                <th data-field="col-04" class="text-center">级别</th>
+                                <th data-field="col-05" class="text-center">所在地区</th>
+                                <th data-field="col-06" class="text-center">联系人</th>
+                                <th data-field="col-07" class="text-center">联系QQ</th>
+                                <th data-field="col-08" class="text-center">商户状态</th>
+                                <th data-field="col-09" class="text-center">选择</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>123</td>
+                                <td>zhangsan</td>
+                                <td>张三</td>
+                                <td>经销商</td>
+                                <td>河北石家庄</td>
+                                <td>张三</td>
+                                <td>52451256</td>
+                                <td>已开启</td>
+                                <td>
+                                    <button class="btn btn-primary btn-xs">选择</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>123</td>
+                                <td>zhangsan</td>
+                                <td>张三</td>
+                                <td>经销商</td>
+                                <td>河北石家庄</td>
+                                <td>张三</td>
+                                <td>52451256</td>
+                                <td>已开启</td>
+                                <td>
+                                    <button class="btn btn-primary btn-xs">选择</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>123</td>
+                                <td>zhangsan</td>
+                                <td>张三</td>
+                                <td>经销商</td>
+                                <td>河北石家庄</td>
+                                <td>张三</td>
+                                <td>52451256</td>
+                                <td>已开启</td>
+                                <td>
+                                    <button class="btn btn-primary btn-xs">选择</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                </div>
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+    <!--选择接收商户-->
+
+
+    <!-- 全局js -->
+    <script src="../../js/jquery.min.js?v=2.1.4"></script>
+    <script src="../../js/bootstrap.min.js?v=3.3.6"></script>
+
+    <!-- 自定义js -->
+    <script src="../../js/content.js?v=1.0.0"></script>
+    <script src="../../js/contabs-sub.js"></script>
+    <!-- 第三方插件 -->
+    <script src="../../js/plugins/pace/pace.min.js"></script>
+    <!-- Bootstrap table -->
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../../js/plugins/bootstrap-table/locale/bootstrap-table-CN.min.js"></script>
+    <!-- Sweet alert -->
+    <script src="../../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="../../js/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+    <script src="../../js/plugins/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!--clipboard-->
+    <script src="../../js/plugins/clipboard/clipboard.min.js"></script>
+
+    <script>
+        $(document).ready(function () {
+            //dataTimePicker
+            $('#daterange').daterangepicker({
+                "autoApply": true,
+                "timePicker": true,
+                "timePicker24Hour": true,
+                "timePickerSeconds": true,
+                ranges: {
+                    '今天': [moment(), moment()],
+                    '昨天': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+                    '过去7天': [moment().subtract(6, 'days'), moment()],
+                    '过去30天': [moment().subtract(29, 'days'), moment()],
+                    '这个月': [moment().startOf('month'), moment().endOf('month')],
+                    '上个月': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+                },
+                locale : {
+                    "format" : 'YYYY-MM-DD HH:mm:ss',
+                    "separator" : " 至 ",//
+                    "applyLabel" : "确定",
+                    "cancelLabel" : "取消",
+                    "fromLabel" : "起始时间",
+                    "toLabel" : "结束时间'",
+                    "customRangeLabel" : "自定义",
+                    "weekLabel" : "W",
+                    "daysOfWeek" : ["日", "一", "二", "三", "四", "五", "六"],
+                    "monthNames" : ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+                    "firstDay" : 1
+                }
+            }, function(start, end, label) {
+                console.log('您选择的时间: ' + start.format('YYYY-MM-DD') + ' - ' + end.format('YYYY-MM-DD') + ' (predefined range: ' + label + ')');
+            });
+
+            //data-table
+            $('#exampleTableToolbar').bootstrapTable({
+                toolbar: '#exampleToolbar',
+                showColumns: false,
+                iconSize: 'outline',
+                icons: {
+                    columns: 'glyphicon-list'
+                },
+                pagination:true,
+                sidePagination:'client',
+                pageNumber:1,
+                pageSize:10,
+                buttonsAlign:'left',
+                toolbarAlign:'right'
+            });
+
+            //sweetalert
+
+
+        });
+
+
+    </script>
+
+</body>
+
+</html>
