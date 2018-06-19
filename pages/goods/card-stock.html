@@ -87,11 +87,12 @@
                                 <th data-field="col-07" class="text-center">商品一级目录</th>
                                 <th data-field="col-08" class="text-center">商品面值</th>
                                 <th data-field="col-09" class="text-center">进货价</th>
-                                <th data-field="col-10" class="text-center">供货商</th>
-                                <th data-field="col-11" class="text-center">过期时间</th>
-                                <th data-field="col-12" class="text-center">导入时间</th>
-                                <th data-field="col-13" class="text-center">操作员</th>
-                                <th data-field="col-14" class="text-center">操作</th>
+                                <th data-field="col-10" class="text-center">代理区域</th>
+                                <th data-field="col-11" class="text-center">供货商</th>
+                                <th data-field="col-12" class="text-center">过期时间</th>
+                                <th data-field="col-13" class="text-center">导入时间</th>
+                                <th data-field="col-14" class="text-center">操作员</th>
+                                <th data-field="col-15" class="text-center">操作</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -105,7 +106,8 @@
                                 <td>Steam单机游戏</td>
                                 <td>98</td>
                                 <td>88</td>
-                                <td></td>
+                                <td>中国</td>
+                                <td>小张</td>
                                 <td>2018-5-16</td>
                                 <td>2018-5-16  24:15:16</td>
                                 <td>zlk</td>
@@ -124,7 +126,8 @@
                                 <td>Steam单机游戏</td>
                                 <td>98</td>
                                 <td>88</td>
-                                <td></td>
+                                <td>中国</td>
+                                <td>小张</td>
                                 <td>2018-5-16</td>
                                 <td>2018-5-16  24:15:16</td>
                                 <td>zlk</td>
@@ -143,7 +146,8 @@
                                 <td>Steam单机游戏</td>
                                 <td>98</td>
                                 <td>88</td>
-                                <td></td>
+                                <td>中国</td>
+                                <td>小张</td>
                                 <td>2018-5-16</td>
                                 <td>2018-5-16  24:15:16</td>
                                 <td>zlk</td>
@@ -162,7 +166,8 @@
                                 <td>Steam单机游戏</td>
                                 <td>98</td>
                                 <td>88</td>
-                                <td></td>
+                                <td>中国</td>
+                                <td>小张</td>
                                 <td>2018-5-16</td>
                                 <td>2018-5-16  24:15:16</td>
                                 <td>zlk</td>
@@ -181,7 +186,28 @@
                                 <td>Steam单机游戏</td>
                                 <td>98</td>
                                 <td>88</td>
+                                <td>中国</td>
+                                <td>小张</td>
+                                <td>2018-5-16</td>
+                                <td>2018-5-16  24:15:16</td>
+                                <td>zlk</td>
+                                <td>
+                                    <button class="btn btn-primary btn-xs margin-bottom-xs" data-toggle="modal" data-target="#editModal">修改</button>
+                                    <button class="btn btn-danger btn-xs margin-bottom-xs delete-button">删除</button>
+                                </td>
+                            </tr>
+                            <tr>
                                 <td></td>
+                                <td>123456789</td>
+                                <td>123XXXXXXXX4444</td>
+                                <td>5132</td>
+                                <td>绝地求生</td>
+                                <td>绝地求生</td>
+                                <td>Steam单机游戏</td>
+                                <td>98</td>
+                                <td>88</td>
+                                <td>中国</td>
+                                <td>小张</td>
                                 <td>2018-5-16</td>
                                 <td>2018-5-16  24:15:16</td>
                                 <td>zlk</td>
@@ -245,7 +271,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-primary submit-button">确定</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -378,6 +404,10 @@
                     function(){
                         swal("删除成功", "记录删除成功", "success");
                     });
+            });
+
+            $('.submit-button').click(function(){
+                swal("保存成功", "", "success");
             });
 
         });

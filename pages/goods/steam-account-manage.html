@@ -29,7 +29,7 @@
             <ol class="breadcrumb">
                 <li>首页</li>
                 <li>商品管理</li>
-                <li><strong>Steam账号列表</strong></li>
+                <li><strong>Steam账号管理</strong></li>
             </ol>
         </div>
         <div class="col-sm-6">
@@ -186,7 +186,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定添加</button>
+                    <button type="button" class="btn btn-primary submit-button">确定添加</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -237,7 +237,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定添加</button>
+                    <button type="button" class="btn btn-primary submit-button">确定添加</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -291,7 +291,7 @@
                 <!--情况3-->
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-info">确定</button>
+                    <button type="button" class="btn btn-info submit-button">确定</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -361,7 +361,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-primary submit-button">确定</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -447,7 +447,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-primary submit-button">确定</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -506,7 +506,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">确定</button>
+                    <button type="button" class="btn btn-primary submit-button">确定</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -599,6 +599,12 @@
                     function(){
                         swal("删除成功", "记录删除成功", "success");
                     });
+            });$('.submit-button').click(function(){
+                swal("保存成功", "", "success");
+            });
+
+            $('.submit-button').click(function(){
+                swal("保存成功", "", "success");
             });
 
         });

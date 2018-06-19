@@ -136,7 +136,7 @@
                                 <td>开启</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs margin-bottom-xs" data-toggle="modal" data-target="#editModal">修改</button>
-                                    <button class="btn btn-primary btn-xs margin-bottom-xs" data-toggle="modal" data-target="#editState">更改状态</button>
+                                    <button class="btn btn-primary btn-xs margin-bottom-xs change-status">更改状态</button>
                                 </td>
                             </tr>
                             <tr>
@@ -159,7 +159,7 @@
                                 <td>开启</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs margin-bottom-xs" data-toggle="modal" data-target="#editModal">修改</button>
-                                    <button class="btn btn-primary btn-xs margin-bottom-xs" data-toggle="modal" data-target="#editState">更改状态</button>
+                                    <button class="btn btn-primary btn-xs margin-bottom-xs change-status">更改状态</button>
                                 </td>
                             </tr>
                             <tr>
@@ -182,7 +182,7 @@
                                 <td>开启</td>
                                 <td>
                                     <button class="btn btn-primary btn-xs margin-bottom-xs" data-toggle="modal" data-target="#editModal">修改</button>
-                                    <button class="btn btn-primary btn-xs margin-bottom-xs" data-toggle="modal" data-target="#editState">更改状态</button>
+                                    <button class="btn btn-primary btn-xs margin-bottom-xs change-status">更改状态</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -226,8 +226,17 @@
                             <div class="col-sm-3 text-right">
                                 <p class="form-control-static">所在地区</p>
                             </div>
-                            <div class="col-sm-8">
-                                <input type="text" class="form-control" placeholder="请输入所在地区">
+                            <div class="col-sm-8 form-inline">
+                                <select name="" id="" class="form-control">
+                                    <option value="选择省份">选择省份</option>
+                                    <option value="河北">河北</option>
+                                    <option value="北京">北京</option>
+                                </select>
+                                <select name="" id="" class="form-control">
+                                    <option value="选择省份">选择城市</option>
+                                    <option value="河北">石家庄</option>
+                                    <option value="北京">邢台</option>
+                                </select>
                             </div>
                         </div>
                         <div class="form-group">
@@ -299,7 +308,7 @@
                                 <p class="form-control-static">店铺地址</p>
                             </div>
                             <div class="col-sm-8">
-                                <input type="text" class="form-control" placeholder="请输入店铺地址">
+                                <input type="text" class="form-control" placeholder="请输入您的店铺网址">
                             </div>
                         </div>
                         <div class="form-group">
@@ -323,41 +332,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">修改</button>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
-    <!--修改区域-->
-
-    <!--修改区域-->
-    <div class="modal" id="editState" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">修改商户状态</h4>
-                </div>
-                <div class="modal-body">
-                    <div class="form-horizontal">
-                        <div class="form-group">
-                            <div class="col-sm-3 text-right">
-                                <p class="form-control-static">商户状态</p>
-                            </div>
-                            <div class="col-sm-8">
-                                <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1" checked> 开启
-                                </label>
-                                <label class="radio-inline">
-                                    <input type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> 关闭
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                    <button type="button" class="btn btn-primary">修改</button>
+                    <button type="button" class="btn btn-primary submit-button">修改</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -451,8 +426,27 @@
                         swal("删除成功", "记录删除成功", "success");
                     });
             });
+            $('.change-status').click(function () {
+                swal({
+                        title: "更改商户状态",
+                        text: "确定更改商户状态为关闭吗",
+                        type: "warning",
+                        showCancelButton: true,
+                        cancelButtonText: "取消",
+                        confirmButtonColor: "#DD6B55",
+                        confirmButtonText: "确定更改",
+                        closeOnConfirm: false
+                    },
+                    function(){
+                        swal("更改成功", "商户状态为已关闭", "success");
+                    });
+            });
             $(".add-button").click(function () {
                 swal({title: "添加成功", text: "区域添加成功", type: "success"})
+            });
+
+            $('.submit-button').click(function(){
+                swal("保存成功", "", "success");
             });
 
         });

@@ -117,7 +117,7 @@
                         <div class="form-group">
                             <label for="inputEmail3" class="col-sm-3 control-label">管理员账号</label>
                             <div class="col-sm-5">
-                                <input type="text" class="form-control" id="inputEmail3" placeholder="请输入管理员账号">
+                                <p class="form-control-static">asdfasd</p>
                             </div>
                         </div>
                         <div class="form-group">
@@ -234,7 +234,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn btn-danger" data-dismiss="modal">保存</button>
+                    <button type="button" class="btn btn-danger submit-button" data-dismiss="modal">保存</button>
                 </div>
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dialog -->
@@ -288,6 +288,10 @@
                     function(){
                         swal("删除成功", "记录删除成功", "success");
                     });
+            });
+
+            $('.submit-button').click(function(){
+                swal("保存成功", "", "success");
             });
 
         });
